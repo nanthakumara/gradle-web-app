@@ -23,10 +23,11 @@ node{
     }
     
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) {
-          sh "docker login -u dockerhandson -p ${Docker_Hub_Pwd}"
+      /**  withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) { **/
+      withCredentials([string(credentialsId: 'f55a6f58-5231-45f1-85e9-da945a2cf1ae', variable: 'secret-pass')]) {
+         sh "docker login -u dockerhandson -p ${secret-pass}"
         }
-        sh 'docker push dockerhandson/gradle-web-app'
+        sh 'docker push ashok123789/web-app-war'
      }
      
       stage('Run Docker Image In Dev Server'){
