@@ -1,11 +1,11 @@
 node{
      
     stage('SCM Checkout'){
-        git url: 'https://github.com/devopstrainingbanglore/gradle-web-app.git',branch: 'master'
+        git url: 'https://github.com/devops-ckreddy/gradle-web-app.git',branch: 'master'
     }
     
     stage("Gradle Clean Build"){
-      def GradleHome = tool name: 'Gradle-4.9', type: 'gradle'
+      def GradleHome = tool name: 'gradle-3.4.1', type: 'gradle'
       def gradleCMD = "${GradleHome}/bin/gradle"
       sh "${gradleCMD} clean build"
       
