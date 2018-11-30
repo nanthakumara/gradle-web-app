@@ -19,7 +19,7 @@ node{
     **/
     
     stage('Build Docker Image'){
-        sh 'docker build -t dockerhandson/gradle-web-app .'
+        sh 'docker build -t ashok123789/web-app-war .'
     }
     
     stage('Push Docker Image'){
