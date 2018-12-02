@@ -32,13 +32,13 @@ node{
      
       stage('Run Docker Image In Dev Server'){
         
-        def dockerRun = ' docker run  -d -p 8080:8080 --name gradle-web-app dockerhandson/gradle-web-app'
+        def dockerRun = ' docker run  -d -p 8080:8080 --name web-app-war ashok123789/web-app-war'
          
          sshagent(['DOCKER_SERVER']) {
-          sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.72 docker stop gradle-web-app || true'
-          sh 'ssh  ubuntu@172.31.20.72 docker rm gradle-web-app || true'
-          sh 'ssh  ubuntu@172.31.20.72 docker rmi -f  $(docker images -q) || true'
-          sh "ssh  ubuntu@172.31.20.72 ${dockerRun}"
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.247 docker stop gradle-web-app || true'
+          sh 'ssh  ubuntu@172.31.34.247 docker rm gradle-web-app || true'
+          sh 'ssh  ubuntu@172.31.34.247 docker rmi -f  $(docker images -q) || true'
+          sh "ssh  ubuntu@172.31.34.247 ${dockerRun}"
        }
        
     }
