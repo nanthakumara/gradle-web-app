@@ -34,7 +34,7 @@ node{
         
         def dockerRun = ' docker run  -d -p 8080:8080 --name web-app-war ashok123789/web-app-war'
          
-         sshagent(['DOCKER_SERVER']) {
+         sshagent(['dockker']){
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.247 docker stop gradle-web-app || true'
           sh 'ssh  ubuntu@172.31.34.247 docker rm gradle-web-app || true'
           sh 'ssh  ubuntu@172.31.34.247 docker rmi -f  $(docker images -q) || true'
