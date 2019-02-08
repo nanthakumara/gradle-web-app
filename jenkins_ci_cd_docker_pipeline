@@ -19,20 +19,20 @@ node{
     **/
     
     stage('Build Docker Image'){
-        sh 'docker build -t ashok123789/web-app-war .'
+        sh 'docker build -t nanthakumara/web-app-war .'
     }
     
     stage('Push Docker Image'){
       withCredentials([string(credentialsId: 'secret-pass', variable: 'secret-pass')]) {
 
-           sh "docker login -u ashok123789 -p ${secret-pass}"
+           sh "docker login -u nanthakumara -p ${secret-pass}"
     }
-           sh 'docker push ashok123789/web-app-war'
+           sh 'docker push nanthakumara/web-app-war'
      }
      
       stage('Run Docker Image In Dev Server'){
         
-        def dockerRun = ' docker run  -d -p 8080:8080 --name web-app-war ashok123789/web-app-war'
+        def dockerRun = ' docker run  -d -p 8080:8080 --name web-app-war nanthakumara/web-app-war'
          
          sshagent(['dockker']){
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.247 docker stop web-app-war || true'
